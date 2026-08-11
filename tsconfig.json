@@ -10,5 +10,5 @@
     "verbatimModuleSyntax": true,
     "types": ["vite/client"]
   },
-  "include": ["src", "playground"]
+  "include": ["src", "playground", ".storybook", "vitest.shims.d.ts"]
 }

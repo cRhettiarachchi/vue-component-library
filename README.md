@@ -6,9 +6,12 @@ Vue 3 component library built on [Reka UI](https://reka-ui.com) primitives.
 
 ```sh
 pnpm install
-pnpm dev        # playground at http://localhost:5173
-pnpm build      # builds the library to dist/ (ESM + CSS + .d.ts)
-pnpm typecheck  # vue-tsc
+pnpm dev              # playground at http://localhost:5173
+pnpm storybook        # Storybook at http://localhost:6006
+pnpm test             # runs every story as a test in headless Chromium (Vitest + Playwright)
+pnpm build            # builds the library to dist/ (ESM + CSS + .d.ts)
+pnpm build-storybook  # static Storybook build to storybook-static/
+pnpm typecheck        # vue-tsc
 ```
 
 ## Structure
@@ -19,15 +22,19 @@ src/
   components/
     Button/
       Button.vue              # built on Reka's Primitive (supports asChild)
+      Button.stories.ts
       index.ts
     Switch/
       Switch.vue              # wraps Reka's SwitchRoot/SwitchThumb
+      Switch.stories.ts
       index.ts
 playground/                   # dev-only app served by `pnpm dev`, not part of the build
+.storybook/                   # Storybook config; loads tokens.css + light/dark toolbar toggle
 ```
 
-Each component lives in its own folder so stories (`*.stories.ts`) and tests can sit
-alongside it later.
+Each component lives in its own folder with its stories next to it. Stories double as
+tests: the Vitest addon (see `test.projects` in `vite.config.ts`) renders every story
+in headless Chromium via Playwright, plus a11y checks from the a11y addon.
 
 ## Usage (once published or linked)
 
@@ -54,6 +61,6 @@ bundled into `style.css`, so consumers get theming for free:
 
 ## Roadmap
 
-- [ ] Storybook for component docs/stories
-- [ ] Playwright for component testing
+- [x] Storybook for component docs/stories
+- [x] Playwright-driven component testing (stories run as Vitest browser tests)
 - [ ] More components

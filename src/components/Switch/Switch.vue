@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { SwitchRoot, SwitchThumb } from 'reka-ui'
+import { SwitchRoot, SwitchThumb } from "reka-ui";
 
 export interface SwitchProps {
-  disabled?: boolean
+  disabled?: boolean;
 }
 
-defineProps<SwitchProps>()
+defineProps<SwitchProps>();
 
-const modelValue = defineModel<boolean>({ default: false })
+const modelValue = defineModel<boolean>({ default: false });
 </script>
 
 <template>
@@ -36,7 +36,7 @@ const modelValue = defineModel<boolean>({ default: false })
   outline-offset: 2px;
 }
 
-.ui-switch[data-state='checked'] {
+.ui-switch[data-state="checked"] {
   background-color: var(--ui-accent);
 }
 
@@ -56,7 +56,7 @@ const modelValue = defineModel<boolean>({ default: false })
   will-change: transform;
 }
 
-.ui-switch__thumb[data-state='checked'] {
+.ui-switch__thumb[data-state="checked"] {
   transform: translateX(21px);
 }
 </style>
