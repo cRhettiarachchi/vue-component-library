@@ -65,6 +65,20 @@ bundled into `style.css`, so consumers get theming for free:
 <html class="dark">
 ```
 
+## Releasing
+
+Versioning and publishing are automated with [Changesets](https://github.com/changesets/changesets):
+
+1. In any PR that changes the library, run `pnpm changeset` and describe the change
+   (patch/minor/major). Commit the generated file in `.changeset/`.
+2. On merge to `main`, the Release workflow opens/updates a "Version Packages" PR that
+   bumps the version and writes the CHANGELOG.
+3. Merging that PR publishes to npm (public, `@titantech` scope) via `pnpm release`.
+
+CI (`.github/workflows/ci.yml`) runs typecheck, story tests, Playwright tests, and the
+library build on every PR and push to `main`. Publishing requires an `NPM_TOKEN`
+repository secret with publish rights to the `@titantech` scope.
+
 ## Roadmap
 
 - [x] Storybook for component docs/stories
