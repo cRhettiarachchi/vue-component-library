@@ -8,28 +8,28 @@
  *
  * Components must only use --ui-* tokens, never the raw scale variables.
  */
-@import '@radix-ui/colors/gray.css';
-@import '@radix-ui/colors/gray-dark.css';
-@import '@radix-ui/colors/indigo.css';
-@import '@radix-ui/colors/indigo-dark.css';
+@import '@radix-ui/colors/sage.css';
+@import '@radix-ui/colors/sage-dark.css';
+@import '@radix-ui/colors/teal.css';
+@import '@radix-ui/colors/teal-dark.css';
 
 :root {
-  --ui-bg: var(--gray-1);
-  --ui-surface: var(--gray-2);
-  --ui-surface-hover: var(--gray-3);
-  --ui-surface-active: var(--gray-4);
+  --ui-bg: var(--sage-1);
+  --ui-surface: var(--sage-2);
+  --ui-surface-hover: var(--sage-3);
+  --ui-surface-active: var(--sage-4);
 
-  --ui-border: var(--gray-7);
-  --ui-border-hover: var(--gray-8);
+  --ui-border: var(--sage-7);
+  --ui-border-hover: var(--sage-8);
 
-  --ui-text: var(--gray-12);
-  --ui-text-muted: var(--gray-11);
+  --ui-text: var(--sage-12);
+  --ui-text-muted: var(--sage-11);
 
-  --ui-control-track: var(--gray-6);
+  --ui-control-track: var(--sage-6);
 
-  --ui-accent: var(--indigo-9);
-  --ui-accent-hover: var(--indigo-10);
+  --ui-accent: var(--teal-9);
+  --ui-accent-hover: var(--teal-10);
   /* Steps 9-10 are designed to keep contrast with white in both themes. */
   --ui-accent-contrast: #ffffff;
-  --ui-focus-ring: var(--indigo-8);
+  --ui-focus-ring: var(--teal-8);
 }

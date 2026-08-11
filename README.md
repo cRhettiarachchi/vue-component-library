@@ -40,7 +40,7 @@ import '@titantech/vue-components/style.css'
 
 Color tokens live in `src/styles/tokens.css`, built on [Radix Colors](https://www.radix-ui.com/colors):
 
-- **Primitive layer** — Radix scales (`--gray-*`, `--indigo-*`). Light values are defined on
+- **Primitive layer** — Radix scales (`--sage-*` for neutrals, `--teal-*` for the accent). Light values are defined on
   `:root`, dark values on `.dark`, so switching theme is just toggling the `dark` class on `<html>`.
 - **Semantic layer** — `--ui-*` tokens (e.g. `--ui-accent`, `--ui-text`, `--ui-border`) mapping
   scale steps to meanings. Defined once; they flip automatically with the theme.
