@@ -1,6 +1,6 @@
 {
   "name": "@titantech/vue-components",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Vue 3 component library built on Reka UI",
   "license": "MIT",
   "repository": {
