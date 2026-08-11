@@ -36,6 +36,22 @@ import { Button, Switch } from '@titantech/vue-components'
 import '@titantech/vue-components/style.css'
 ```
 
+## Theming
+
+Color tokens live in `src/styles/tokens.css`, built on [Radix Colors](https://www.radix-ui.com/colors):
+
+- **Primitive layer** — Radix scales (`--gray-*`, `--indigo-*`). Light values are defined on
+  `:root`, dark values on `.dark`, so switching theme is just toggling the `dark` class on `<html>`.
+- **Semantic layer** — `--ui-*` tokens (e.g. `--ui-accent`, `--ui-text`, `--ui-border`) mapping
+  scale steps to meanings. Defined once; they flip automatically with the theme.
+
+Components must only use `--ui-*` tokens, never Radix scale variables directly. The tokens are
+bundled into `style.css`, so consumers get theming for free:
+
+```html
+<html class="dark">
+```
+
 ## Roadmap
 
 - [ ] Storybook for component docs/stories

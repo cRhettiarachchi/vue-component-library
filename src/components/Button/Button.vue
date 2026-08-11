@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 }
 
 .ui-button:focus-visible {
-  outline: 2px solid #4f46e5;
+  outline: 2px solid var(--ui-focus-ring);
   outline-offset: 2px;
 }
 
@@ -67,30 +67,31 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 }
 
 .ui-button[data-variant='primary'] {
-  background-color: #4f46e5;
-  color: #ffffff;
+  background-color: var(--ui-accent);
+  color: var(--ui-accent-contrast);
 }
 
 .ui-button[data-variant='primary']:hover:not(:disabled) {
-  background-color: #4338ca;
+  background-color: var(--ui-accent-hover);
 }
 
 .ui-button[data-variant='secondary'] {
   background-color: transparent;
-  border-color: #d1d5db;
-  color: #111827;
+  border-color: var(--ui-border);
+  color: var(--ui-text);
 }
 
 .ui-button[data-variant='secondary']:hover:not(:disabled) {
-  background-color: #f3f4f6;
+  border-color: var(--ui-border-hover);
+  background-color: var(--ui-surface-hover);
 }
 
 .ui-button[data-variant='ghost'] {
   background-color: transparent;
-  color: #111827;
+  color: var(--ui-text);
 }
 
 .ui-button[data-variant='ghost']:hover:not(:disabled) {
-  background-color: #f3f4f6;
+  background-color: var(--ui-surface-hover);
 }
 </style>

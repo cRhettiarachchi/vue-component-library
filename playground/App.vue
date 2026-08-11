@@ -3,11 +3,22 @@ import { ref } from 'vue'
 import { Button, Switch } from '../src'
 
 const enabled = ref(false)
+const dark = ref(false)
+
+function toggleTheme() {
+  dark.value = !dark.value
+  document.documentElement.classList.toggle('dark', dark.value)
+}
 </script>
 
 <template>
   <main class="playground">
-    <h1>Component Playground</h1>
+    <header class="header">
+      <h1>Component Playground</h1>
+      <Button variant="secondary" size="sm" @click="toggleTheme">
+        {{ dark ? 'Light' : 'Dark' }} theme
+      </Button>
+    </header>
 
     <section>
       <h2>Button</h2>
@@ -44,13 +55,21 @@ const enabled = ref(false)
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  color: #111827;
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
 }
 
 .playground {
   max-width: 720px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
+}
+
+.playground .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .playground section {

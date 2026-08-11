@@ -28,6 +28,7 @@
     "reka-ui": "^2.0.0"
   },
   "devDependencies": {
+    "@radix-ui/colors": "^3.0.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "typescript": "^5.8.0",
     "vite": "^7.0.0",

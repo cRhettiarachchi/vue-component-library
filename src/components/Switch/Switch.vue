@@ -26,18 +26,18 @@ const modelValue = defineModel<boolean>({ default: false })
   padding: 0;
   border: none;
   border-radius: 9999px;
-  background-color: #d1d5db;
+  background-color: var(--ui-control-track);
   cursor: pointer;
   transition: background-color 120ms ease;
 }
 
 .ui-switch:focus-visible {
-  outline: 2px solid #4f46e5;
+  outline: 2px solid var(--ui-focus-ring);
   outline-offset: 2px;
 }
 
 .ui-switch[data-state='checked'] {
-  background-color: #4f46e5;
+  background-color: var(--ui-accent);
 }
 
 .ui-switch[data-disabled] {
@@ -50,7 +50,7 @@ const modelValue = defineModel<boolean>({ default: false })
   width: 18px;
   height: 18px;
   border-radius: 9999px;
-  background-color: #ffffff;
+  background-color: var(--ui-accent-contrast);
   transform: translateX(3px);
   transition: transform 120ms ease;
   will-change: transform;
