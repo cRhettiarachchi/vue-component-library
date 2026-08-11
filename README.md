@@ -9,6 +9,7 @@ pnpm install
 pnpm dev              # playground at http://localhost:5173
 pnpm storybook        # Storybook at http://localhost:6006
 pnpm test             # runs every story as a test in headless Chromium (Vitest + Playwright)
+pnpm test:e2e         # Playwright interaction tests against Storybook (starts it automatically)
 pnpm build            # builds the library to dist/ (ESM + CSS + .d.ts)
 pnpm build-storybook  # static Storybook build to storybook-static/
 pnpm typecheck        # vue-tsc
@@ -30,11 +31,16 @@ src/
       index.ts
 playground/                   # dev-only app served by `pnpm dev`, not part of the build
 .storybook/                   # Storybook config; loads tokens.css + light/dark toolbar toggle
+e2e/                          # Playwright interaction tests, run against Storybook stories
 ```
 
-Each component lives in its own folder with its stories next to it. Stories double as
-tests: the Vitest addon (see `test.projects` in `vite.config.ts`) renders every story
-in headless Chromium via Playwright, plus a11y checks from the a11y addon.
+Each component lives in its own folder with its stories next to it. Testing has two layers:
+
+- **`pnpm test`** — the Storybook Vitest addon (see `test.projects` in `vite.config.ts`)
+  renders every story in headless Chromium as a smoke test, plus a11y checks.
+- **`pnpm test:e2e`** — Playwright tests in `e2e/` drive the story iframes directly
+  (`storyUrl()` in `e2e/helpers.ts`) for interaction, keyboard, and theming assertions.
+  The config boots Storybook automatically; reuses an already-running one locally.
 
 ## Usage (once published or linked)
 

@@ -21,6 +21,7 @@
     "build": "vite build",
     "typecheck": "vue-tsc --noEmit",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -31,12 +32,14 @@
     "reka-ui": "^2.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@radix-ui/colors": "^3.0.0",
     "@storybook/addon-a11y": "^10.5.7",
     "@storybook/addon-docs": "^10.5.7",
     "@storybook/addon-themes": "^10.5.7",
     "@storybook/addon-vitest": "^10.5.7",
     "@storybook/vue3-vite": "^10.5.7",
+    "@types/node": "^26.2.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vitest/browser-playwright": "latest",
     "@vitest/coverage-v8": "latest",
