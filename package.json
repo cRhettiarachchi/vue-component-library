@@ -1,5 +1,5 @@
 {
-  "name": "@thesea/vue-components",
+  "name": "@titantech/vue-components",
   "version": "0.0.1",
   "description": "Vue 3 component library built on Reka UI",
   "type": "module",

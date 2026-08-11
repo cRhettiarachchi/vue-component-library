@@ -1,4 +1,4 @@
-# @thesea/vue-components
+# @titantech/vue-components
 
 Vue 3 component library built on [Reka UI](https://reka-ui.com) primitives.
 
@@ -32,8 +32,8 @@ alongside it later.
 ## Usage (once published or linked)
 
 ```ts
-import { Button, Switch } from '@thesea/vue-components'
-import '@thesea/vue-components/style.css'
+import { Button, Switch } from '@titantech/vue-components'
+import '@titantech/vue-components/style.css'
 ```
 
 ## Roadmap
