@@ -12,6 +12,7 @@
 @import '@radix-ui/colors/sage-dark.css';
 @import '@radix-ui/colors/teal.css';
 @import '@radix-ui/colors/teal-dark.css';
+@import '@radix-ui/colors/black-alpha.css';
 
 :root {
   --ui-bg: var(--sage-1);
@@ -32,4 +33,8 @@
   /* Steps 9-10 are designed to keep contrast with white in both themes. */
   --ui-accent-contrast: #ffffff;
   --ui-focus-ring: var(--teal-8);
+
+  /* Overlays and floating panels (modals, dropdowns). */
+  --ui-overlay: var(--black-a8);
+  --ui-shadow: 0 10px 38px -10px var(--black-a7), 0 10px 20px -15px var(--black-a4);
 }

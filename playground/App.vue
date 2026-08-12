@@ -1,9 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, Switch } from '../src'
+import { Button, Input, Modal, Select, Switch } from '../src'
 
 const enabled = ref(false)
 const dark = ref(false)
+const name = ref('')
+const fruit = ref<string>()
+const fruits = ref<string[]>([])
+const modalOpen = ref(false)
+
+const fruitOptions = [
+  { label: 'Apple', value: 'apple' },
+  { label: 'Banana', value: 'banana' },
+  { label: 'Blueberry', value: 'blueberry' },
+  { label: 'Grapes', value: 'grapes' },
+  { label: 'Pineapple', value: 'pineapple', disabled: true },
+]
 
 function toggleTheme() {
   dark.value = !dark.value
@@ -46,6 +58,42 @@ function toggleTheme() {
         <Switch v-model="enabled" />
         <span>{{ enabled ? 'On' : 'Off' }}</span>
         <Switch disabled />
+      </div>
+    </section>
+
+    <section>
+      <h2>Input</h2>
+      <div class="row">
+        <Input v-model="name" aria-label="Your name" placeholder="Your name" />
+        <span>{{ name }}</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Select</h2>
+      <div class="row">
+        <Select v-model="fruit" :options="fruitOptions" placeholder="Pick a fruit" />
+        <Select v-model="fruits" :options="fruitOptions" multiple placeholder="Pick fruits" />
+      </div>
+    </section>
+
+    <section>
+      <h2>Modal</h2>
+      <div class="row">
+        <Modal
+          v-model:open="modalOpen"
+          title="Example modal"
+          description="A short supporting description."
+        >
+          <template #trigger>
+            <Button>Open modal</Button>
+          </template>
+          <p style="margin: 0">Modal body content goes here.</p>
+          <template #footer>
+            <Button variant="secondary" @click="modalOpen = false">Cancel</Button>
+            <Button @click="modalOpen = false">Confirm</Button>
+          </template>
+        </Modal>
       </div>
     </section>
   </main>

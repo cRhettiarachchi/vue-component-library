@@ -25,6 +25,9 @@ src/
       Button.vue              # built on Reka's Primitive (supports asChild)
       Button.stories.ts
       index.ts
+    Input/                    # styled text input, sm/md/lg sizes
+    Modal/                    # Reka Dialog with trigger/footer slots, v-model:open
+    Select/                   # Reka Select; single & multiple modes, options array API
     Switch/
       Switch.vue              # wraps Reka's SwitchRoot/SwitchThumb
       Switch.stories.ts
