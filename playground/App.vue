@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, Input, Modal, Select, Switch } from '../src'
+import { Button, Checkbox, Input, Modal, Select, Switch } from '../src'
 
 const enabled = ref(false)
+const accepted = ref(false)
 const dark = ref(false)
 const name = ref('')
 const fruit = ref<string>()
@@ -58,6 +59,15 @@ function toggleTheme() {
         <Switch v-model="enabled" />
         <span>{{ enabled ? 'On' : 'Off' }}</span>
         <Switch disabled />
+      </div>
+    </section>
+
+    <section>
+      <h2>Checkbox</h2>
+      <div class="row">
+        <Checkbox v-model="accepted" aria-label="Accept terms" />
+        <span>{{ accepted ? 'Accepted' : 'Not accepted' }}</span>
+        <Checkbox disabled aria-label="Disabled checkbox" />
       </div>
     </section>
 
