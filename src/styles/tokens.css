@@ -37,4 +37,7 @@
   /* Overlays and floating panels (modals, dropdowns). */
   --ui-overlay: var(--black-a8);
   --ui-shadow: 0 10px 38px -10px var(--black-a7), 0 10px 20px -15px var(--black-a4);
+
+  /* Resting elevation for surfaces sitting on the page (cards). */
+  --ui-shadow-card: 0 1px 3px var(--black-a3), 0 4px 12px -2px var(--black-a4);
 }

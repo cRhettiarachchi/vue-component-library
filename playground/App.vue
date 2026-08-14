@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, Checkbox, Input, Modal, Select, Switch } from '../src'
+import { Button, Card, Checkbox, Input, Modal, Select, Switch } from '../src'
+import exerciseIcon from '../src/components/Card/exercise-icon.svg'
 
 const enabled = ref(false)
 const accepted = ref(false)
@@ -59,6 +60,27 @@ function toggleTheme() {
         <Switch v-model="enabled" />
         <span>{{ enabled ? 'On' : 'Off' }}</span>
         <Switch disabled />
+      </div>
+    </section>
+
+    <section>
+      <h2>Card</h2>
+      <div class="row">
+        <Card title="Barbell Bench Press" subtitle="Chest · Strength">
+          <template #media>
+            <img :src="exerciseIcon" alt="" width="22" height="22" />
+          </template>
+        </Card>
+      </div>
+      <div class="row" style="max-width: 260px">
+        <Card
+          title="Single-Arm Dumbbell Bench Press With Rotation"
+          subtitle="Chest · Shoulders · Triceps · Strength"
+        >
+          <template #media>
+            <img :src="exerciseIcon" alt="" width="22" height="22" />
+          </template>
+        </Card>
       </div>
     </section>
 
