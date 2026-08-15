@@ -24,3 +24,11 @@ jobs:
           ANTHROPIC.KEY: ${{ secrets.ANTHROPIC_KEY }}
           config.model: "anthropic/claude-opus-4-8"
           config.fallback_models: '["anthropic/claude-haiku-4-5"]'
+          # Auto-run tools on PR open/update (Action deployment's own toggles —
+          # distinct from the hosted GitHub App's [github_app].pr_commands).
+          github_action_config.auto_review: "true"
+          github_action_config.auto_describe: "true"
+          github_action_config.auto_improve: "true"
+          # Post /improve's suggestions as inline, committable review comments
+          # instead of one summary table comment.
+          pr_code_suggestions.commitable_code_suggestions: "true"
