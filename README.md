@@ -27,6 +27,7 @@ src/
       index.ts
     Input/                    # styled text input, sm/md/lg sizes
     Modal/                    # Reka Dialog with trigger/footer slots, v-model:open
+    Pagination/               # page window with ellipsis, v-model page, per-page/sibling-count
     Select/                   # Reka Select; single & multiple modes, options array API
     Switch/
       Switch.vue              # wraps Reka's SwitchRoot/SwitchThumb
