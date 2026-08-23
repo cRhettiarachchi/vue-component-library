@@ -27,11 +27,18 @@ src/
       index.ts
     Input/                    # styled text input, sm/md/lg sizes
     Modal/                    # Reka Dialog with trigger/footer slots, v-model:open
+    Pagination/               # page controls over usePagination()
+    Popover/                  # dismissable panel using useClickOutside + useFocusTrap
     Select/                   # Reka Select; single & multiple modes, options array API
     Switch/
       Switch.vue              # wraps Reka's SwitchRoot/SwitchThumb
       Switch.stories.ts
       index.ts
+    Tabs/                     # Reka Tabs with an animated indicator
+    Toast/                    # <ToastProvider> viewport + presentational <Toast>
+    Tooltip/                  # hover/focus label with open & close delays
+  composables/                # headless building blocks, exported as public API
+docs/composables.md           # composable reference
 playground/                   # dev-only app served by `pnpm dev`, not part of the build
 .storybook/                   # Storybook config; loads tokens.css + light/dark toolbar toggle
 e2e/                          # Playwright interaction tests, run against Storybook stories
@@ -52,6 +59,17 @@ import { Button, Switch } from '@titantech/vue-components'
 import '@titantech/vue-components/style.css'
 ```
 
+## Composables
+
+The headless logic behind the overlay and list components is exported too, so
+consumers can build their own on the same foundation:
+
+```ts
+import { useClickOutside, useFocusTrap, usePagination, useToast } from '@titantech/vue-components'
+```
+
+See [`docs/composables.md`](docs/composables.md) for the full reference.
+
 ## Theming
 
 Color tokens live in `src/styles/tokens.css`, built on [Radix Colors](https://www.radix-ui.com/colors):
@@ -60,6 +78,7 @@ Color tokens live in `src/styles/tokens.css`, built on [Radix Colors](https://ww
   `:root`, dark values on `.dark`, so switching theme is just toggling the `dark` class on `<html>`.
 - **Semantic layer** — `--ui-*` tokens (e.g. `--ui-accent`, `--ui-text`, `--ui-border`) mapping
   scale steps to meanings. Defined once; they flip automatically with the theme.
+  Status colors (`--ui-warning`, `--ui-danger`) come from the Radix amber and red scales.
 
 Components must only use `--ui-*` tokens, never Radix scale variables directly. The tokens are
 bundled into `style.css`, so consumers get theming for free:
@@ -86,4 +105,5 @@ repository secret with publish rights to the `@titantech` scope.
 
 - [x] Storybook for component docs/stories
 - [x] Playwright-driven component testing (stories run as Vitest browser tests)
+- [x] Headless composables exported as public API
 - [ ] More components
