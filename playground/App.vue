@@ -1,6 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, Card, Checkbox, Input, Modal, Select, Switch } from '../src'
+import {
+  Button,
+  Card,
+  Checkbox,
+  Input,
+  Modal,
+  Pagination,
+  Popover,
+  Select,
+  Switch,
+  Tabs,
+  ToastProvider,
+  Tooltip,
+  useToast,
+} from '../src'
 import exerciseIcon from '../src/components/Card/exercise-icon.svg'
 
 const enabled = ref(false)
@@ -10,6 +24,18 @@ const name = ref('')
 const fruit = ref<string>()
 const fruits = ref<string[]>([])
 const modalOpen = ref(false)
+const popoverOpen = ref(false)
+const label = ref('')
+const tab = ref('overview')
+const page = ref(1)
+
+const { toast } = useToast()
+
+const tabItems = [
+  { label: 'Overview', value: 'overview' },
+  { label: 'Activity', value: 'activity' },
+  { label: 'Archived', value: 'archived', disabled: true },
+]
 
 const fruitOptions = [
   { label: 'Apple', value: 'apple' },
@@ -127,6 +153,65 @@ function toggleTheme() {
           </template>
         </Modal>
       </div>
+    </section>
+
+    <section>
+      <h2>Tabs</h2>
+      <Tabs v-model="tab" :items="tabItems" aria-label="Playground sections">
+        <template #overview><p>Model value: {{ tab }}</p></template>
+        <template #activity><p>12 deploys, 3 rollbacks.</p></template>
+        <template #archived><p>Nothing archived.</p></template>
+      </Tabs>
+    </section>
+
+    <section>
+      <h2>Tooltip</h2>
+      <div class="row">
+        <Tooltip content="Copies the current URL to your clipboard">
+          <Button variant="secondary">Share</Button>
+        </Tooltip>
+        <Tooltip content="Opens below instead" side="bottom">
+          <Button variant="ghost">Below</Button>
+        </Tooltip>
+      </div>
+    </section>
+
+    <section>
+      <h2>Popover</h2>
+      <div class="row">
+        <Popover v-model:open="popoverOpen" align="start">
+          <template #trigger><Button>Add label</Button></template>
+          <template #default="{ close }">
+            <form style="display: grid; gap: 0.5rem" @submit.prevent="close">
+              <label for="playground-label" style="font-size: 0.8125rem">Label name</label>
+              <Input id="playground-label" v-model="label" size="sm" />
+              <Button type="submit" size="sm">Save</Button>
+            </form>
+          </template>
+        </Popover>
+        <span>{{ label }}</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Pagination</h2>
+      <Pagination v-model:page="page" :total="240" :per-page="10" />
+    </section>
+
+    <section>
+      <h2>Toast</h2>
+      <div class="row">
+        <Button @click="toast({ title: 'Deployment finished', description: 'v2.4.1 is live.' })">
+          Notify
+        </Button>
+        <Button
+          variant="secondary"
+          @click="toast({ title: 'Upload failed', description: 'File was over 25 MB.', variant: 'error' })"
+        >
+          Notify (error)
+        </Button>
+      </div>
+      <ToastProvider position="bottom-right" />
     </section>
   </main>
 </template>

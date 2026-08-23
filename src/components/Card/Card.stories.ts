@@ -62,10 +62,6 @@ export const LongContent: Story = {
 };
 
 export const CustomContent: Story = {
-  args: {
-    media: {}
-  },
-
   render: (args) => ({
     components: { Card },
     setup() {
