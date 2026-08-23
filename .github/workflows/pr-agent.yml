@@ -22,6 +22,21 @@ jobs:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           config.model: "gpt-5.6-terra"
           config.fallback_models: '["gpt-5.2-codex"]'
+          # Deeper per-issue reasoning than the "medium" default — costs more
+          # per run, trades some cost-efficiency for catching more real issues.
+          config.reasoning_effort: "high"
+          # Default caps hard-limit detection regardless of model quality:
+          # pr_reviewer.num_max_findings=3 means /review reports at most 3
+          # issues no matter how many actually exist in the diff.
+          pr_reviewer.num_max_findings: "15"
+          pr_reviewer.extra_instructions: |
+            Prioritize correctness bugs, security issues, and logic errors
+            over style nits. Check edge cases (nulls, empty inputs, off-by-one,
+            error handling) and whether surrounding code (not just the diff
+            lines) is affected by the change.
+          # More context after each changed hunk (default 1 line) so the
+          # model can see how the change affects code right below it.
+          config.patch_extra_lines_after: "4"
           # Auto-run tools on PR open/update (Action deployment's own toggles,
           # separate from the hosted GitHub App's [github_app].pr_commands).
           github_action_config.auto_review: "true"
@@ -30,3 +45,8 @@ jobs:
           # Post /improve's suggestions as inline, committable review comments
           # instead of one summary table comment.
           pr_code_suggestions.commitable_code_suggestions: "true"
+          # Defaults cap /improve at 3 suggestions per chunk and 3 total API
+          # calls — large PRs silently stop getting analyzed past the first
+          # few chunks. Raise both so bigger diffs get fully covered.
+          pr_code_suggestions.num_code_suggestions_per_chunk: "6"
+          pr_code_suggestions.max_number_of_calls: "6"
