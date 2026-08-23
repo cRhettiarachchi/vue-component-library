@@ -20,7 +20,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-          config.model: "gpt-5.3-codex"
+          config.model: "gpt-5.6-codex"
           config.fallback_models: '["gpt-5.2-codex"]'
           # Auto-run tools on PR open/update (Action deployment's own toggles,
           # separate from the hosted GitHub App's [github_app].pr_commands).
