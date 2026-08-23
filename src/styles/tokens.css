@@ -12,6 +12,10 @@
 @import '@radix-ui/colors/sage-dark.css';
 @import '@radix-ui/colors/teal.css';
 @import '@radix-ui/colors/teal-dark.css';
+@import '@radix-ui/colors/amber.css';
+@import '@radix-ui/colors/amber-dark.css';
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/red-dark.css';
 @import '@radix-ui/colors/black-alpha.css';
 
 :root {
@@ -33,6 +37,10 @@
   /* Steps 9-10 are designed to keep contrast with white in both themes. */
   --ui-accent-contrast: #ffffff;
   --ui-focus-ring: var(--teal-8);
+
+  /* Status colours. Step 9 stays legible against both theme backgrounds. */
+  --ui-warning: var(--amber-9);
+  --ui-danger: var(--red-9);
 
   /* Overlays and floating panels (modals, dropdowns). */
   --ui-overlay: var(--black-a8);
